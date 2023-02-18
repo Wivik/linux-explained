@@ -1,0 +1,47 @@
+name: Produce pandoc export
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Setup Pandoc
+        uses: siacodelabs/setup-pandoc
+
+      - name: Produce epub and pdf
+        run: |
+          pandoc -o linux-explained.epub linux-explained.md
+          pandoc -o linux-explained.pdf linux-explained.md
+
+      - name: Produce release note
+        uses: TriPSs/conventional-changelog-action@v3
+        id: changelog
+        with:
+          github-token: ${{ secrets.github_token }}
+          version-file: './version_file.json' // or .yml, .yaml, .toml
+          skip-commit: 'true'
+          skip-tag: 'true'
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.changelog.output.clean_changelog }}
+          tag_name: ${{ steps.changelog.output.tag }}
+          files: |
+            linux-explained.epub
+            linux-explained.pdf
+          
+          
+          
+          
+          
+          
+          
+          
