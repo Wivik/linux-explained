@@ -3,7 +3,7 @@ title: Linux Explained
 author: Seb
 rights:  Creative Commons Attribution ShareAlike 4.0
 language: en-US
-cover-image: ./tux.png
+cover-image: ./img/tux.png
 description: A journey in the Linux world, written for beginners or newcomers.
 date: 2023-02-10
 ---
@@ -725,7 +725,7 @@ If you remember the Unix history in the first chapter, one detail about the *Mul
 One of the result of this implementation is the "users" management. In computing, a user is the physical person using a computer. It's also a logical identity the operating system knows with specific permissions and rights : that's the user account. The user account identity is usually protected by a password to ensure only people aware of this secret should access these specific computing resources.
 
 ![Individual user accesses management : each user must have explicit access to the computing resource. Administration cost is high and errors are more frequent. User permissions management and audit is complicated.
-](individual-accesses.png)
+](img/individual-accesses.png)
 
 The group is the ability to regroup several users into one or more groups, allowing to manage the permission at the group level and not at the user level, reducing the administrative tasks charge.
 
