@@ -3,6 +3,11 @@ name: Produce pandoc export
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      prelease:
+        default: false
+        description: 'Publish release as a prelease'
+        type: boolean
   
 jobs:
   publish:
@@ -32,6 +37,7 @@ jobs:
         with:
           body: ${{ steps.changelog.outputs.clean_changelog }}
           tag_name: ${{ steps.changelog.outputs.tag }}
+          prerelease: ${{ inputs.prelease }}
           files: |
             linux-explained.epub
           
