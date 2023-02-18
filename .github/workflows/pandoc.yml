@@ -6,6 +6,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     
@@ -33,7 +35,6 @@ jobs:
           tag_name: ${{ steps.changelog.output.tag }}
           files: |
             linux-explained.epub
-            linux-explained.pdf
           
           
           
