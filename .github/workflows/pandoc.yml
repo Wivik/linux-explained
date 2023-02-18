@@ -12,9 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - name: Setup Pandoc
-        uses: siacodelabs/setup-pandoc@v1
-
       - name: Write epub
         uses: docker://pandoc/core:2.9
         with:
