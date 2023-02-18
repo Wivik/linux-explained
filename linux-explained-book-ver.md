@@ -22,11 +22,17 @@ Linux Explained is addressed to beginners or newcomers to the Linux world. Addit
 
 Linux Explained started as a series of articles I’ve wrote for my blog. Following this first publication, I had the idea to rewrite these articles to fit in a book. The original series is available at the following URL : https://blog.zedas.fr/tags/linux-explained/
 
+The sources of this book (texts and diagrams) are available on GitHub and you are free to contribute to this work. This book is not set in stone and its content may evolve and improve with each contribution.
+
+https://github.com/Wivik/linux-explained
+
 # Copyright {epub:type=copyright-page}
 
 Unless other statement, this book content, including the images, is licensed under Creative Commons BY-SA 4.0.
 
-The cover page is illustrated with Tux, the Linux mascott, drawn by Larry Ewing and licensed under Creative Commons By-SA.
+![CreativeCommons BY-SA](img/cc-by-sa.png)
+
+The cover page is illustrated with Tux, the Linux mascott, drawn by Larry Ewing and licensed under Creative Commons BY-SA.
 
 # Chapter 1 : What is Linux ?
 
