@@ -34,6 +34,14 @@ Unless other statement, this book content, including the images, is licensed und
 
 The cover page is illustrated with Tux, the Linux mascott, drawn by Larry Ewing and licensed under Creative Commons BY-SA.
 
+# Contributors {epub:type=contributors}
+
+| Name | Website | Role |
+| ------ | --------- | ----- |
+| Seb | https://zedas.fr | Main author |
+
+
+
 # Chapter 1 : What is Linux ?
 
 Usually, when we talk about Linux, we talk about a Linux Distribution. But actually, Linux itself is just one component of an operating system (ok, a very central one). Linux is a [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)), a core computer program that manages the entire operating system. It's the interface between the hardware and the software : CPU access, Memory access, Filesystem access, devices access, all of this is made through the kernel. By misuse of langage, we assimilate Linux to an operating system but it's not exactly accurate because the OS is the integration of the Linux Kernel and various other softwares (we will detail this in the "What is a Linux Distribution" part).
