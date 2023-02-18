@@ -25,8 +25,6 @@ jobs:
         with:
           github-token: ${{ secrets.github_token }}
           version-file: './version_file.json'
-          skip-commit: 'true'
-          skip-tag: 'true'
 
       - name: Publish release
         uses: softprops/action-gh-release@v1
