@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Setup Pandoc
-        uses: siacodelabs/setup-pandoc
+        uses: siacodelabs/setup-pandoc@v1
 
       - name: Produce epub and pdf
         run: |
@@ -25,7 +25,7 @@ jobs:
         id: changelog
         with:
           github-token: ${{ secrets.github_token }}
-          version-file: './version_file.json' // or .yml, .yaml, .toml
+          version-file: './version_file.json'
           skip-commit: 'true'
           skip-tag: 'true'
 
