@@ -15,10 +15,10 @@ jobs:
       - name: Setup Pandoc
         uses: siacodelabs/setup-pandoc@v1
 
-      - name: Produce epub and pdf
-        run: |
-          pandoc -o linux-explained.epub linux-explained.md
-          pandoc -o linux-explained.pdf linux-explained.md
+      - name: Write epub
+        uses: docker://pandoc/core:2.9
+        with:
+          args: "-o linux-explained.epub linux-explained.md"
 
       - name: Produce release note
         uses: TriPSs/conventional-changelog-action@v3
