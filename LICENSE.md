@@ -2,7 +2,7 @@
 
 Unless other statements, this work is licensed under CreativeCommons Attribution ShareAlike 4.0
 
-![CC-BY-SA](img/cc-by-sa.png)
+![CC-BY-SA](book/img/cc-by-sa.png)
 
 https://creativecommons.org/licenses/by-sa/4.0/
 
