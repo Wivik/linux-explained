@@ -8,11 +8,27 @@ If you want to directly fix the book's content, see below :
 
 ## Want to develop the content ?
 
+### How this repository's organized
+
+The book sources are in the `book` directory.
+
+The pages starting by `00-*.md` are the title, cover, preface, etc.
+
+The book content starts with the `01-*.md` files. One file per chapter.
+
+The `diagram` directory contains the sources of the illustrations.
+
+The `img` directory contains the images included in the book.
+
+### How to add or modify content
+
 Fork the repository.
 
 Propose your changes with a pull request.
 
-Add yourself in the Contributors section of the book if it's the first time.
+Add yourself in the Contributors page of the book if it's the first time.
+
+### Diagrams conventions
 
 The diagrams are made with [Excalidraw](https://excalidraw.com/) using the following convention :
 
@@ -24,3 +40,12 @@ The diagrams are made with [Excalidraw](https://excalidraw.com/) using the follo
 	+ `#fa5252` for the error steps
 	+ `#40c057` for the success steps
 - Ensure you name the arrows to ensure the colors may not confuse for black and white e-reading devices
+
+### Image insertion convention
+
+Each image must be described since this text will be displayed above them. Use the expected markdown convention :
+
+```markdown
+![This is a description](./img/image.png)
+```
+
