@@ -14,10 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Fetch files in workspace
+        if: book-files
+        run: echo BOOK_FILES=$(ls book/00-*.md book/01-*.md) >> $GITHUB_OUTPUT
+
       - name: Write epub
         uses: docker://pandoc/core:2.9
         with:
-          args: "-o linux-explained.epub book/00-*.md 01-*.md"
+          args: "-o linux-explained.epub ${{ steps.book-files.outputs.BOOK_FILES }}"
 
       - name: Produce release note
         uses: TriPSs/conventional-changelog-action@v3
