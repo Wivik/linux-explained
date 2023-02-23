@@ -15,3 +15,4 @@ Linux Explained started as a series of articles I’ve wrote for my blog. Follow
 The sources of this book (texts and diagrams) are available on GitHub and you are free to contribute to this work. This book is not set in stone and its content may evolve and improve with each contribution.
 
 https://github.com/Wivik/linux-explained
+

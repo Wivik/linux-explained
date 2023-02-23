@@ -541,3 +541,4 @@ zsh: no such file or directory: /dev/tcp/zedas.fr/443
 $ bash -c "</dev/tcp/zedas.fr/443" && echo ok
 ok
 ```
+
