@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Fetch files in workspace
-        if: book-files
+        id: book-files
         run: echo BOOK_FILES=$(ls book/00-*.md book/01-*.md) >> $GITHUB_OUTPUT
 
       - name: Write epub
