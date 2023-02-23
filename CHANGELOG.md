@@ -1,4 +1,4 @@
-# 0.1.0 (2023-02-18)
+# [0.1.0](https://github.com/Wivik/linux-explained/compare/ed4d10b5ff52d05562b859edfb7153dfc23d84f9...v0.1.0) (2023-02-18)
 
 
 ### Features
