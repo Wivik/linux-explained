@@ -28,6 +28,10 @@ Propose your changes with a pull request.
 
 Add yourself in the Contributors page of the book if it's the first time.
 
+### Text convention
+
+Ensure you always leave an empty line at the end of the markdown file. If not, the chapter may be included with the previous one.
+
 ### Diagrams conventions
 
 The diagrams are made with [Excalidraw](https://excalidraw.com/) using the following convention :
