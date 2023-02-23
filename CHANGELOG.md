@@ -1,13 +1,3 @@
-# [0.2.0](https://github.com/Wivik/linux-explained/compare/v0.1.0...v0.2.0) (2023-02-23)
-
-
-### Features
-
-* :busts_in_silhouette: added contributors ([d62ee2d](https://github.com/Wivik/linux-explained/commit/d62ee2d54514963e567f0f4f1faa51cf0e67df5f))
-* :sparkles: chapter 6 ([8a849c8](https://github.com/Wivik/linux-explained/commit/8a849c80511f84b93b82601a98d372425de77208))
-
-
-
 # [0.1.0](https://github.com/Wivik/linux-explained/compare/ed4d10b5ff52d05562b859edfb7153dfc23d84f9...v0.1.0) (2023-02-18)
 
 
