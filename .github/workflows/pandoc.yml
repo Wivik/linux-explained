@@ -16,7 +16,7 @@ jobs:
 
       - name: Fetch files in workspace
         id: book-files
-        run: echo BOOK_FILES=$(cd book && ls 00-*.md 01-*.md) >> $GITHUB_OUTPUT
+        run: echo BOOK_FILES=$(ls book/00-*.md book/01-*.md) >> $GITHUB_OUTPUT
 
       - name: Write epub
         uses: docker://pandoc/core:2.9
