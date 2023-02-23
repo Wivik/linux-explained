@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/Wivik/linux-explained/compare/v0.2.0...v0.2.1) (2023-02-23)
+
+
+### Bug Fixes
+
+* :ambulance: empty line required for chapters ([434266c](https://github.com/Wivik/linux-explained/commit/434266c60d10a6b6ecbe11e6a712ff30cee61445))
+
+
+
 # [0.2.0](https://github.com/Wivik/linux-explained/compare/v0.1.0...v0.2.0) (2023-02-23)
 
 
