@@ -1,3 +1,12 @@
+## [0.2.3-rc.0](https://github.com/Wivik/linux-explained/compare/v0.2.2...v0.2.3-rc.0) (2023-02-24)
+
+
+### Bug Fixes
+
+* :hammer: cover image needs full path.. ([2d81ae8](https://github.com/Wivik/linux-explained/commit/2d81ae817b16d4166b582dcbaf3670f93c14800e))
+
+
+
 ## [0.2.2](https://github.com/Wivik/linux-explained/compare/v0.2.1...v0.2.2) (2023-02-23)
 
 
