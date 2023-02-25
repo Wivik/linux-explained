@@ -24,8 +24,6 @@ The stream channels are completely transparent for the user because no matter fr
 
 ![The stdout and stderr channels by default.](./img/shell-stream-no-redirect.png)
 
-The default stdout and stderr channels.
-
 Here is the stdout and stderr in application :
 
 ```bash
@@ -426,8 +424,6 @@ cat /etc/filesystems | grep vfat
 ```
 
 ![The cat command returns the file content. The content is redirected to the grep stdin channel and the command outputs its final result. The user did not see the transformation.](./img/shell-pipeline.png)
-
-The `cat` command returns the file content. The content is redirected to the `grep` stdin channel and the command outputs its final result. The user did not see the transformation.
 
 Now let's use a more practical example of shell pipeline. Use-case : I want to extract for GitHub's meta API the IPv4 subnets for the API service. 
 
