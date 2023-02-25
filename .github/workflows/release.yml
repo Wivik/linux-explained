@@ -5,14 +5,14 @@ on:
     inputs:
       prerelease:
         type: boolean
-        description: Is it a prerelease ?
+        description: Is it a release ?
         default: false
   workflow_call:
     inputs:
       prerelease:
         type: boolean
-        description: Is it a prerelease ?
-        default: true
+        description: Is it a release ?
+        default: false
 
 
 jobs:
@@ -39,17 +39,17 @@ jobs:
       - name: Produce release note
         uses: TriPSs/conventional-changelog-action@v3
         id: changelog
+        if: ${{ env.release == true }}
         with:
           github-token: ${{ secrets.github_token }}
           version-file: './version_file.json'
-          pre-release: ${{ env.prerelease }}
 
       - name: Publish release
         uses: softprops/action-gh-release@v1
+        if: ${{ env.release == true }}
         with:
           body: ${{ steps.changelog.outputs.clean_changelog }}
           tag_name: ${{ steps.changelog.outputs.tag }}
-          prerelease: ${{ env.prerelease }}
           files: |
             linux-explained.epub
 
