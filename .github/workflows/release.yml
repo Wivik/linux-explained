@@ -21,7 +21,7 @@ jobs:
     permissions:
       contents: write
     env:
-      prerelease: ${{ inputs.prerelease }}
+      release: ${{ inputs.prerelease }}
     steps:
 
       - name: Checkout
