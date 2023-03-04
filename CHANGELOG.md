@@ -1,3 +1,17 @@
+# [0.3.0](https://github.com/Wivik/linux-explained/compare/v0.2.3-rc.0...v0.3.0) (2023-03-04)
+
+
+### Bug Fixes
+
+* :art: clean duplicated text ([c4e9de7](https://github.com/Wivik/linux-explained/commit/c4e9de792da9314639c767023f3415816f79cee1))
+
+
+### Features
+
+* chapter 7 ([dc0e1b0](https://github.com/Wivik/linux-explained/commit/dc0e1b06355b0fdfc9e310b3c3bfa996a915ea1a))
+
+
+
 ## [0.2.3-rc.0](https://github.com/Wivik/linux-explained/compare/v0.2.2...v0.2.3-rc.0) (2023-02-24)
 
 
@@ -32,16 +46,6 @@
 
 * :busts_in_silhouette: added contributors ([d62ee2d](https://github.com/Wivik/linux-explained/commit/d62ee2d54514963e567f0f4f1faa51cf0e67df5f))
 * :sparkles: chapter 6 ([8a849c8](https://github.com/Wivik/linux-explained/commit/8a849c80511f84b93b82601a98d372425de77208))
-
-
-
-# [0.1.0](https://github.com/Wivik/linux-explained/compare/ed4d10b5ff52d05562b859edfb7153dfc23d84f9...v0.1.0) (2023-02-18)
-
-
-### Features
-
-* :memo: add license and readme ([609f0d1](https://github.com/Wivik/linux-explained/commit/609f0d16318394567e59afe30437792968270820))
-* :sparkles: init repository ([ed4d10b](https://github.com/Wivik/linux-explained/commit/ed4d10b5ff52d05562b859edfb7153dfc23d84f9))
 
 
 
