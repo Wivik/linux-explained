@@ -1,6 +1,6 @@
-# Chapter 3 : The Filesystems
+# Chapter 3 : The Filesystems {#chapter-3}
 
-## What is a filesystem ?
+## What is a filesystem ? {#chapter3-chat-is-a-filesystem}
 
 A [filesystem](https://en.wikipedia.org/wiki/File_system), or FS, is the method an operating system uses to structure the data on a storage device (hard drive, SSD, USB flash stick, whatever). It's a logical view of the physical storage that describes how the disk is organized and how and where the various data pieces are stored and identified to compose a consistent file. Indeed, when a file is written on disk, the content is actually cut into several parts written in blocks. Your file is like a series of books stored on a shelf. In this metaphor, the shelf would be the file and the books its fragments. The blocks size may vary according to the filesystem format settings.
 
@@ -23,11 +23,11 @@ On Linux, the most common filesystems type today are [ext4](https://en.wikipedia
 
 ext4, xfs and Btrfs have all a common thing : they're journaling filesystems (NTFS too, but it's a Windows native FS, not Linux). In a nutshell, a journaling filesystem keeps tracks of the changes not yet committed into a "journal", a circular log file. In case of a failure event (power failure, system crash, etc), these filesystems can be brought online faster and are more resilient to the risk of corruption. Basically, the journal stores the write events before actually executing them on the disk, preventing the risk of orphaned data blocks or storage leak, meaning the free sectors are not released into the pool for being reused. The journaling filesystem has been created by IBM with AIX 3.1's JFS in 1990. Microsoft implemented it in its Windows NT's NTFS in 1993. For Linux, the journaling FS arrived in 2001 with ReiserFS and ext3.
 
-## The filesystem structure and mount concept
+## The filesystem structure and mount concept {#chapter-3-the-filesystem-structure-and-mount-concept}
 
 Linux's filesystem organization is standardized in the [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) specification. Inherited from the [Unix Filesystem](https://en.wikipedia.org/wiki/Unix_filesystem), the structure is very similar. On Microsoft Windows, a filesystem is represented by a letter, usually the `C:` drive for the main one, and `D:` for the next one, which may be an optical drive, etc. On Unix and Linux, this notion does not exists. 
 
-### The Filesystem hierarchy
+### The Filesystem hierarchy {#chapter-3-the-filesystem-hierarchy}
 
 On Linux, the primary hierarchy level is the *root*, represented by the `/` character. There is no logical separation like Windows do with its letters. On Linux, the various filesystems present in the partition table are mounted in subsequent levels of the root folder. All files and folders are stored after the root level, even if they are physically on another device.
 
@@ -87,7 +87,7 @@ Let's explain some of these folders :
 | `/var`    | Variable files, may content caches, logs, locks files, etc. It can be seen like the `/tmp` as a non-critical file storage, but this one is preserved are reboot.                                                                                                                                                                                                                                                                          |
 
 
-## What is mounting a filesystem ?
+## What is mounting a filesystem ? {#chapter-3-what-is-mounting-a-filesystem}
 
 So far, we have seen that a filesystem is how the storage is seen and sorted by an operating system, and how it structures it. But in order to be exploited, a filesystem needs to be mounted. Mounting a filesystem is associating a storage device's partition to a path the system will be able to access and use the data stored on it.
 

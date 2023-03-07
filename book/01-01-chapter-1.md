@@ -1,4 +1,4 @@
-# Chapter 1 : What is Linux ?
+# Chapter 1 : What is Linux ? {#chapter-1}
 
 Usually, when we talk about Linux, we talk about a Linux Distribution. But actually, Linux itself is just one component of an operating system (ok, a very central one). Linux is a [kernel](https://en.wikipedia.org/wiki/Kernel_(operating_system)), a core computer program that manages the entire operating system. It's the interface between the hardware and the software : CPU access, Memory access, Filesystem access, devices access, all of this is made through the kernel. By misuse of langage, we assimilate Linux to an operating system but it's not exactly accurate because the OS is the integration of the Linux Kernel and various other softwares (we will detail this in the "What is a Linux Distribution" part).
 
@@ -6,7 +6,7 @@ This distinction is not specific to Linux, even in Microsoft's world you have it
 
 Linux is distributed under a free and open-source license, the General Public License 2.0, allowing anybody to use it, modify it, distribute it, and integrate it in other works. This is one of the many reasons that made the Linux kernel very popular for Servers systems, embedded systems, mobile devices ([Android](https://en.wikipedia.org/wiki/Android_(operating_system)) is based on Linux too), and even mainframes and supercomputers. If Linux was born for Intel x86 architecture at the beginning, the kernel now supports a multitude of platforms : ARM, PowerPC, etc.
 
-## Unix and Linux history
+## Unix and Linux history {#chapter-1-unix-and-linux-history}
 
 In August 2021, Linux celebrated [its 30th birthday](https://blog.zedas.fr/posts/linux-a-30-ans/). In this article, in French (I can translate it later if requested), I've made a little history about the origins of the Linux Kernel. Linux is what we commonly call a "Unix-Like" or a "POSIX compatible" kernel. But, what are "Unix" and "POSIX" ?
 
@@ -22,7 +22,7 @@ In 1992, Linus adopts the GPLv2 license for the Linux source code and distribute
 
 Nowadays, Linux is present in various embedded, servers, mainframes, supercomputers, mobile systems, and is powering a big part of the Cloud Computing.
 
-## What is a Linux Distribution
+## What is a Linux Distribution {#chapter-1-what-is-a-linux-distribution}
 
 As we said at the beginning, Linux itself is a kernel. Alone, its capabilities to interact with the user are limited because it needs other programs to perform tasks. In order to being useful, Linux needs a bundle of softwares and applications to use the computing resources distributed with it : that's the Linux Distribution.
 

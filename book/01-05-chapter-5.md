@@ -1,6 +1,6 @@
-# Chapter 5 : The users management
+# Chapter 5 : The users management {#chapter-5}
 
-## What is a user and group for Linux ?
+## What is a user and group for Linux ? {"chapter-5-what-is-a-user-and-group-for-linux}
 
 If you remember the Unix history in the first chapter, one detail about the *Multics*, then *Unix* conception was to be multi-users. A [multi-user software](https://en.wikipedia.org/wiki/Multi-user_software) is a program able to give access to the computing resources by multiple users of the machine. Nowadays it must seems to be pretty obvious, but in the dark ages of computing, the ability for a computer to executes several processes simultaneously was limited. The concept of multitasking arrived in the years 1960, and the computers were able to share CPU time and resources for several processes at once, thanks to the implementation of scheduling, priority management, and inter-process communication. 
 
@@ -53,7 +53,7 @@ Why am I member of these other groups ? That's because they'll provide to my use
 
 For example, `wheel` on Fedora is the group for the `sudoers` administrators members. If I wasn't in this group, and if no other type of `sudoers` configuration was made, my user would be unable to invoke the `sudo` command properly.
 
-## Linux users management
+## Linux users management {#chapter-5-linux-users-management}
 
 Remember when I've wrote : "On Unix, everything's a file" ? Here is a concrete example. The `groups` command displayed my groups membership. The `id` command returns the current logged username with several other informations. In this case : `seb`. These commands do not rely on a mystical power : they just read configurations files.
 
@@ -67,13 +67,13 @@ $ id root
 uid=0(root) gid=0(root) groups=0(root)
 ```
 
-### The Linux login process summarized
+### The Linux login process summarized {#chapter-5-the-linux-login-process-summarized}
 
 Here is the login process summarized into a diagram, this will help to understand the interactions between the files we will explain.
 
 ![The login process steps.](img/login-process.png)
 
-### Users accounts : /etc/passwd
+### Users accounts : /etc/passwd {#chapter-5-users-accounts-etc-passwd}
 
 `id` finds these informations in `/etc/passwd` : 
 
@@ -94,7 +94,7 @@ A line in `/etc/passwd` contains the following fields separated by `:` :
 - `/home/seb` : the home user's path
 - `/usr/bin/zsh` : the user's default shell started when the user logs into the system
 
-### Groups : /etc/group
+### Groups : /etc/group {#chapter-5-groups-etc-group}
 
 And for the groups membership, there is the `/etc/group` file :
 
@@ -116,7 +116,7 @@ Which is cut into these fields :
 
 You may have noticed the group named after my username having no membership : that's normal, since it's my primary group, its membership is instructed in the `/etc/passwd` entry. The `/etc/group` is more related to the secondary groups membership.
 
-### Users passwords : /etc/shadow
+### Users passwords : /etc/shadow {#chapter-5-users-passwords-etc-shadow}
 
 And the last file about user management would be `/etc/shadow`, a file that replaced the password field in `/etc/passwd`. Unlike `/etc/passwd` and `/etc/group`, this file is impossible to read for any user :
 
@@ -156,7 +156,7 @@ This file has the following fields :
 
 Salt and hash are the cryptography concepts used for passwords storage (hash can has other purposes, but that's not the topic). The hash is the result of a mathematical function that transforms a string of characters into a unique representation, the "digest". The salt is a complementary random value added to the password before the hashing process adding a randomness in the data and making it more difficult to guess using brute force attacks. When the user logs into the system, they'll provide their password. Since the system is the only one to knows the salt value associated to the password, it calculates the hash and compares it with the stored value. If both hashes matches, the access is granted. If not, the login failed.
 
-### About passwordless users
+### About passwordless users {#chapter-5-about-passwordless-users}
 
 Linux's users can be passworldless, meaning they have no password for login. They basically can't log into the shell by themselves since the process requires a password for a local connection. But that doesn't mean a user couldn't log with this account since a privileged one can switch to any user. The passwordless users are mostly for local services account and should be used only in this way. A human user or a service account meant to connect on other systems *must* have a password defined. And it's still a good practice to set passwords to service account, even if they're random and not used.
 
@@ -164,7 +164,7 @@ Passwordless account should have a very limited perimeter of actions and permiss
 
 Additionally, please note that there are other ways to log into a Linux system. The user account could be provided by an Identity Manager (LDAP, IAM, etc), or you may use SSH keys. We will explore the SSH key in another article.
 
-### A note about the root user
+### A note about the root user {#chapter-5-a-note-about-the-root-user}
 
 We mentioned `root` a couple of time and for each example, we said that `root` can override the securities and policies. Now that we are talking about managing users, let's have a word about the most critical one on a Linux system.
 
@@ -187,7 +187,7 @@ Some good practices about `root` (non exhaustive list) :
 - Keep your system up to date because trying to break `root`'s access thanks to vulnerabilities is one of the attack pattern
 - `root` should not be able to open remote ssh sessions, that's usually a default setting in openSSH server to forbid it
 
-### Create, update, remove groups
+### Create, update, remove groups {#chapter-5-create-update-remove-groups}
 
 New groups can be created with the command `groupadd` and specifying the group's name.
 
@@ -251,7 +251,7 @@ drwxr-xr-x.   2 root     1200 4096 Feb 16 21:08 myapp
 
 The ownership of the file is preserved, but since it correspond to nobody, the GID is displayed instead of the group name. This directory is basically orphaned from the group's perspective.
 
-### Create, update, remove users accounts
+### Create, update, remove users accounts {#chapter-5-create-update-remove-users}
 
 Now, let's create our users. For my application, I want to create the user "poochiapp" with its group named "poochigroup". The `useradd` command will do that :
 

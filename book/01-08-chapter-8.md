@@ -1,6 +1,6 @@
-# Chapter 8 : Remote access with SSH
+# Chapter 8 : Remote access with SSH {#chapter-8}
 
-## From RSH to SSH
+## From RSH to SSH {#chapter-8-from-rsh-to-ssh}
 
 The Remote Shell, or `rsh`, is a command line computer program created in 1983 as a part of the Berkeley "*[r-commands](https://en.wikipedia.org/wiki/Berkeley_r-commands)*" - r for remote -, released for the first time in 1981, made to enable the users of an Unix computer to connect to another one using the network. Aside `rsh`, this set of commands includes tools for remote file copy (`rcp`), remote file synchronization (`rsync`), remote execution (`rexec`), etc.
 
@@ -12,7 +12,7 @@ Like `rsh`, `ssh` is a client server protocol made to open sessions on a remote 
 
 Today, one of the most common implementation is the [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH) version, released in 1999 and forked from the original SSH protocol while it was still a free software before being transformed into a commercial product. The protocol is generally referred by the name SSH-1 and SSH-2 meaning the major version of its implementation. SSH-2 has been developed by OpenSSH as a revisited version and the protocol also implemented backward compatibility with SSH-1. Today, SSH-1 is deprecated and should not be used. OpenSSH definitely expunged its support from the code base with the 7.6 release in 2017.
 
-## SSH Architecture
+## SSH Architecture {#chapter-8-ssh-architecture}
 
 SSH relies on the public-key cryptography to authenticate the remote system and allow it to authenticate the user trying to connect on it. SSH works on three hierarchical layers : 
 
@@ -51,11 +51,11 @@ Authentication steps :
 6. The client and servers can now exchange data and commands in a secured encrypted way.
 
 
-## Authentication methods
+## Authentication methods {#chapter-8-authentication-methods}
 
 SSH supports two authentication methods : the Public key and the Password.
 
-### The public key authentication
+### The public key authentication {#chapter-8-the-public-key-authentication}
 
 The public key is the most preferred method. The server possesses a list of authorized keys in a file judiciously named `authorized_keys`. This file can be present at different places we will see in the configuration chapter. These keys are the **public keys** of the users allowed to connect on the server. The users have their own **private key** and they keep it secret. Let's have a word about the public key cryptography notion.
 
@@ -82,19 +82,19 @@ If the public key is not in the `authorized_keys` file or if the challenge doesn
 
 RSA is one of the most common key algorithm supported by nearly all SSH clients and servers. ECDSA and EdDSA are more recent algorithms that provide better security and performance.
 
-### The password authentication
+### The password authentication {#chapter-8-the-password-authentication}
 
-The password authentication is basically the same method as authenticating locally on the computer and will follow the same workflow as the pattern we described in [Chapter : 5 User management](/posts/linux-explained-5-user-management/).
+The password authentication is basically the same method as authenticating locally on the computer and will follow the same workflow as the pattern we described in [Chapter 5 : User management](#chapter5).
 
 Once the secured tunnel is setup by the SSH connection, the user sends its username and password. Then, the usual Linux login process is executed and the server authenticates the user.
 
 Since the password-based connection is reputed less-secured than the key-based authentication and vulnerable to brute-force attacks or password sniffing, it is not the preferred neither the recommended one.
 
-## SSH configurations
+## SSH configurations {#chapter-8-ssh-configurations}
 
 Both SSH client and server can have specific configurations, let's take a tour of these files.
 
-### Server configuration
+### Server configuration {#chapter-8-server-configuration}
 
 The main server configuration file is located at `/etc/ssh/sshd_config`. The default installation usually setup the server in a proper configuration for security, but some parameters should have a review.
 
@@ -111,7 +111,7 @@ It is also in `/etc/ssh` where you can find the server's private and public keys
 
 Finally, one of the most important file to setup an SSH connection is the `authorized_keys` file. This file is expected to be in the home directory of the user in a sub directory named `.ssh` : `~/.ssh/authorized_keys`. It only contains a list of authorized public keys for authentication purpose, one key per line. For security reasons, the permissions of the file must be restricted and cannot be too opened or the ssh daemon will refuse the access.
 
-### Client configuration
+### Client configuration {#chapter-8-client-configuration}
 
 The first interesting configuration file on the client side is `/etc/ssh/ssh_config`, we described in the previous section. This configuration file defines system-wide parameters for the client such as the preferred authentication method, etc.
 
@@ -142,11 +142,11 @@ The `~/.ssh` folder also contains the user's private and related public keys for
 
 One last file is the `~/.ssh/known_hosts` that contains the list of trusted hosts (the one you had to answer "yes" at the first connection). This file contains the server's full hostname and its public key. One of the interests of this file is to keep a track of the server's identity. Imagine your server is a virtual machine you can destroy and recreate at will. Since the server's key will be regenerated during its recreation, the SSH client will alert the host key mismatch the known host. This is a protection against keys hijacking and man-in-the-middle (MITM) attacks. Please note that if there is a MITM during the first connection and you trust it, it may be able to bypass this security feature.
 
-## Useful features
+## Useful features {#chapter-8-useful-features}
 
 Aside its primary usage, SSH, possesses some nice features for a system administrator.
 
-### Port forwarding
+### Port forwarding {#chapter-8-port-forwarding}
 
 The port forwarding is a feature that allow a client to forward the traffic on a specific port to the server's through the SSH connection. Let's say you have a printing server - Cups - on which one you want to access its GUI. You can't access to the port 631 (the Cups GUI port) from your network because reasons, but you can access the server with SSH. In your command, you can forward the 631 port to another local port (let's say 2631).
 
@@ -198,7 +198,7 @@ $ curl http://localhost:2631
 (...)
 ```
 
-### Route traffic through SSH tunneling
+### Route traffic through SSH tunneling {#chapter-8-route-traffic-through-ssh-tunnelling}
 
 In the SSH definition, we said that the protocol establish an encrypted tunnel between two hosts. One of the neat features available with SSH is that you can redirect your web traffic through the tunnel using it as a proxy. This setup require some configuration but not that much.
 
@@ -250,11 +250,11 @@ Now I reopen whatismyip.com and what can I see ? Since I've opened a connection 
 
 Of course, this feature is only possible when you're able to connect on a remote SSH server. This possibility is usually described as a way to avoid the proxies on an enterprise network, but the companies will also usually block other ports that are not HTTP or HTTPS, so opening a SSH tunnel may be difficult on their network. But it can be useful to use it on an untrusted network such as a public Wi-Fi.
 
-## Some security practices
+## Some security practices {#chapter-8-some-security-practices}
 
 This last part will talk about the security for SSH. Since it's a network protocol that plays a critical role, its security must be enforced. Here is some common advice regarding how to secure a SSH server and client. Of course, this list won't be exhaustive.
 
-### Use key-based authentication and strong passwords
+### Use key-based authentication and strong passwords {#chapter-8-use-key-based-authentication-and-strong-passwords}
 
 The key-based authentication is more secure than a username and password since it relies on a secret only known by the client and there are no password to type on a prompt after the initial setup. This said, in any cases, the user account must still have a strong password randomly generated to ensure it would not be vulnerable to a dictionary or brute-force attack.
 
@@ -273,7 +273,7 @@ You may also disable the Empty Password users, this will disallow remote login w
 
 Again, the users passwords and the SSH keys passphrases should be strong enough to resist to brute-force attacks and should be randomly generated (a password manager like KeepassXC is your best friend) to ensure they're not in a dictionary.
 
-### Disable root login, restrict authorized users
+### Disable root login, restrict authorized users {#chapter-8-disable-root-login-restrict-authorized-users}
 
 That's one of the first thing to verify : ensure `root` cannot directly login to the server. This can be achieved by modifying the following setting :
 
@@ -287,7 +287,7 @@ You may additionally set the client idle timeout with the settings `ClientAliveC
 
 If the use case permit it, you can lock down the users to their home directories using the `chroot` option. `chroot` is one of the oldest process isolation method embedded in Linux. By activating the `ChrootDirectory` option on the SSH server, the users won't be able to leave their home directories since the session will be locked to a specific directory tree. This use case is recommended for file transfer such as using sftp servers to ensure the user account is unable to go elsewhere. It's also a nice way to reduce the attack surface in case of account compromission.
 
-### Using a ssh bastion host
+### Using a ssh bastion host {#chapter-8-using-a-ssh-bastion-host}
 
 A SSH Bastion, or Bastion Host, is a server with a specific purpose : being the gateway to your SSH hosts. You may find these kind of server in enterprise context. They're jump server used to access to remote environment without being able to access them directly. In this architecture, the hosts are inside a closed network bubble and the jump server is the only one allowed to access to them. 
 
@@ -305,7 +305,7 @@ This principle is called the **least privilege policy**. This concept aims to re
 
 On Linux, the implementation of a least privilege policy is usually made through groups and `sudo` configurations. It is a complementary part of the next topic.
 
-### Monitor SSH activity
+### Monitor SSH activity {#chapter-8-monitor-ssh-activity}
 
 Since SSH is a critical service on a Linux server, its activity must be monitored and audited. To achieve that, you have several possibilities.
 

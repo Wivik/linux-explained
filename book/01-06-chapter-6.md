@@ -1,6 +1,6 @@
-# Chapter 6 : The Standard Streams
+# Chapter 6 : The Standard Streams {#chapter-6}
 
-## What are the Standard Streams
+## What are the Standard Streams {#chapter-6-what-are-the-standard-streams}
 
 On a Linux text-based shell (and on other systems too), you have the notion of Standard Streams. In the shell, you can interact with commands, files and manipulate them through the Standard Streams. The Standard Streams are the input and output communication channels the shell can provide. There are 3 of them : 
 
@@ -18,7 +18,7 @@ Each of the three streams have a dedicated number :
 
 These numbers are useful in order to interact with the streams and manipulate them, especially for the stream redirections.
 
-## The stream redirections
+## The stream redirections {#chapter-6-the-stream-redirections}
 
 The stream channels are completely transparent for the user because no matter from which stream the output came from, the display will be the same. Despite being two different channels, stdout and stderr are displayed in the same way on the terminal.
 
@@ -41,7 +41,7 @@ We can manipulate the stream channels and redirect them to another stream, a fil
 - `>>` do the same, but if the target is a file, the data stream will be append into the file instead of replacing it.
 - `<` is the reverse way, used to input data into a command channel from a file instead of reading the stdin. We will see this one in the stdin redirections laters.
 
-### About the exit status code
+### About the exit status code {#chapter-6-about-the-exit-status-code}
 
 Before manipulating success and error command, a word about the exit status code. When a command is run on Linux, it will return a status code. A success status will always be `0`. Any other number would mean an error or something else.
 
@@ -63,7 +63,7 @@ Some commands can use the exit status code to return a meaningful information. F
 
 By using two different errors codes, you can condition how to interpret `grep`'s result. For example, you may consider that finding nothing is a problem and aborting your code. Or it would be OK and you would continue.
 
-### Stdout and stderr redirections
+### Stdout and stderr redirections {#chapter-6-stdout-and-stderr-redirections}
 
 Let's start with the most common and easy, the stdout and stderr redirections. Here is a little step by step to explain these redirections :
 
@@ -180,7 +180,7 @@ ls: cannot access '/tmp/notexists': No such file or directory
 # /tmp content
 ```
 
-### The tee command
+### The tee command {#chapter-6-the-tee-command}
 
 Sometimes, you want to see your outputs in your display, and also redirect them to a file for a later logging. That the purpose of the command `tee`. `tee` is a command that reads the standard input and writes it to both standard out and one or more files. It's a very useful command when you have a program that writes a lot of data in the stdout and you want to analyse while it's executing without pausing it.
 
@@ -238,7 +238,7 @@ And we have the following output :
 
 Some explanations : While using the `less` command, the output seems to be "frozen". Actually, the flood is still running, but the output is paginated. I've used the Page Up and Page Down keys to move into the output. Below this, a second session uses the `watch` command to display the size of the file named `hello.txt`. You may observe the content is growing : the output is redirected to `hello.txt` while I can read it properly on the terminal.
 
-### Stdin redirection
+### Stdin redirection {#chapter-6-stdin-redirection}
 
 Now we've seen how to redirect the stdout and stderr channels, let's talk about the stdin. Stdin is the input, usually the keyboard on the terminal. But, you can also redirect data streams to the stdin, in a reverse way. Instead of redirecting an output to a file, we redirect the content of a file to a command. Additionally, we can also redirect the output of such a command to another file. For stdin, the redirect character is `<`.
 
@@ -290,7 +290,7 @@ $ cat num_lines.txt
 5492
 ```
 
-### The xargs command
+### The xargs command {#chapter-6-xargs-command}
 
 Since we're talking about the stdin redirection, we can't ignore the `xargs` command. `xargs`, for "e**x**tended **arg**ument**s**", is made to build and execute commands from the standard input. This command is usually invoked after another one, using a shell pipeline, to pass the output of the first command to another one.
 
@@ -358,7 +358,7 @@ With `xargs` :
 
 
 
-### A note about the unnecessary usage of cat
+### A note about the unnecessary usage of cat {#chapter-6-a-note-about-the-unnecessary-usage-of-cat}
 
 On Linux, there is a command we like to use a lot : `cat`. Unrelated to the domestic animal, its actual purpose of `cat` is to concatenate files into one by returning its output to the stdout. But it's very common to simply use it to display the content of one or several files directly in the stdout.
 
@@ -403,7 +403,7 @@ $ less < file
 # (...)
 ```
 
-## The shell pipelines
+## The shell pipelines {#chapter-6-the-shell-pipelines}
 
 In a general definition for IT, a pipeline is a sequence of tasks performed by an information system to produce a result. It's similar to a workflow if you prefer. Typically, in Continuous Integration and Delivery, we talk about "CI/CD pipeline" for the complete process that manages the build and delivery (and possibly more actions) of a software.
 
@@ -499,7 +499,7 @@ In this pipeline, `curl`'s stdout is piped to `jq`'s stdin. `jq'`s stdout is the
 
 About the `\` notation you've seen here : for a better readability purpose, or display reasons such as this website, it's a good practice to use this escape character for splitting to several lines your shell command.
 
-### Chaining with conditions
+### Chaining with conditions {#chapter-6-chaining-with-conditions}
 
 Another useful element in shell scripting is the possibility to chain and condition the execution of commands in a pipeline. If a command succeed, we play the next one. If not, we play another one later. To achieve this, we use these operators :
 

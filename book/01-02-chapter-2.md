@@ -1,6 +1,6 @@
-# Chapter 2 : The bootloader, Init process and Shell
+# Chapter 2 : The bootloader, Init process and Shell {#chapter-2}
 
-## The bootloader
+## The bootloader {#chapter-2-the-bootloader}
 
 The [bootloader](https://en.wikipedia.org/wiki/Bootloader) is a software that is responsible for booting the operating system of a computer. Booting the computer is the moment when you push the "Power On" button and have the hardware powered and initializing. Then the software starting up in order to be able to use the computing resources and eventually waiting for the user's inputs. The hardware starts a small program stored into a read-only memory chip attached to the motherboard, formerly known as the [BIOS](https://en.wikipedia.org/wiki/BIOS), and now replaced by the [UEFI](https://en.wikipedia.org/wiki/UEFI).
 
@@ -35,7 +35,7 @@ Please note that it's not actually GRUB that manages itself the boot list of the
 [1]: https://en.wikipedia.org/wiki/Bootloader#/media/File:Debian_Unstable_GRUB2_(2015).png
 [2]: https://en.wikipedia.org/wiki/Bootloader#/media/File:Windows_Boot_Manager_with_Windows_7,Vista_and_XP.png
 
-## The Init Process
+## The Init Process {#chapter-2-the-init-process}
 
 Remember our previous article and the Linux architecture diagram ? Now we will explain what is the Init System, or Init Process, that starts after the Linux Kernel startup.
 
@@ -106,7 +106,7 @@ Arrived here, you may have noticed that there are always criticisms or controver
 
 End of parenthesis, now let's take a look to the next component, the Shell.
 
-## The Shell
+## The Shell {#chapter-2-the-shell}
 
 The [shell](https://en.wikipedia.org/wiki/Shell_(computing)) is a computer program that provides the interface between humans, or other programs, with the operating system. It can be a text shell, a command line interface, or a graphical shell, the Desktop Environment. Text-based Shell are working with the input of commands into a text console and returns a result meanwhile a graphical shell interacts with the user by manipulating visual objects such as windows, buttons and menus.
 
@@ -120,7 +120,7 @@ Once the init system has finished loading the various daemons and processes, it 
 
 The shell profile is a set of files installed at different places in the system. There are at the system's configuration files level (a directory name `/etc`), and in the user's home directory (usually `/home/{username}`). The directories and filesystems will be explained in the next article, I won't go into these details now.
 
-### The text console shell
+### The text console shell {#chapter-2-the-text-console-shell}
 
 Usually, a server-oriented Linux distribution will not have a graphical user interface, only a command-line shell. This interface uses a scripting language composed of commands with arguments in order to perform tasks. There are several different shells : the Bourne Shell (sh, one of the most historic one), the Bourne-Again Shell or bash (one of the most common, part of the GNU Project), the Z shell or [zsh](/posts/zsh/) (a modern bash-compatible shell), etc. The command line interface can be used to manipulate files and folders, perform administrative tasks like creating and updating users, launching programs, managing the system, etc.
 
@@ -145,7 +145,7 @@ Actually, the shell uses a notion of Standard streams. I won't detail them too m
 
 Thanks to redirections functions, the user can interact and use the three of them at various degrees such as manipulating the output of a command, input a command's content from the standard input instead of reading a file, etc. We will see that in a dedicated article.
 
-### The Graphical shell
+### The Graphical shell {#chapter-2-the-graphical-shell}
 
 As we said above, a shell can also be a graphical session. For Linux, you may have heard about the notion of Window Manager, or Desktop Environment. [GNOME](https://www.gnome.org), [KDE](https://kde.org), [Cinnamon](https://projects.linuxmint.com/cinnamon/), [Xfce](https://xfce.org), the choice is vast. These Desktop Environments have all their own user experience and goals (user friendly, lightweight..) and a Linux distribution shipped with a default Desktop Environment can easily switch to another one without changing the operating system.
 

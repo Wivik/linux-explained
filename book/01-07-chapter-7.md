@@ -1,6 +1,6 @@
-# Chapter 7 : The Memory management
+# Chapter 7 : The Memory management {#chapter-7}
 
-## What is the memory for an operating system
+## What is the memory for an operating system {#chapter-7-what-is-the-memory-management-for-an-operating-system}
 
 The memory management is a critical aspect of an operating system. It's goal is to provide a dynamic way to allocate the portions of the system's memory when a process request it and free it when its task is over and reuse it for new tasks. The memory management is one of the keys of the system's stability. But, what is the memory for an OS ?
 
@@ -16,11 +16,11 @@ Because it's a limited resource, its management is a critical process for an OS 
 
 Understanding how Linux manages the system's memory is important for a system administrator to help optimize the system performance, troubleshoot issues, and ensure the applications are running as efficiency as possible.
 
-## How Linux manages the memory
+## How Linux manages the memory {#chapter-6-how-linux-manages-the-memory}
 
 Linux has a well furnished toolbox for memory management, but first let's put some definitions with the memory hierarchy.
 
-### Memory hierarchy
+### Memory hierarchy {#chapter-6-memory-hierarchy}
 
 We can usually identify four main types of memory in Linux :
 
@@ -29,7 +29,7 @@ We can usually identify four main types of memory in Linux :
 3. Kernel Memory : This is a part of the physical memory, reserved for the use of the Kernel. This space is reserved to its exclusive usage for its own tasks and data.
 4. User-space memory : This is the memory used for the user-space applications, where any user processes are working.
 
-### Memory Pages
+### Memory Pages {#chapter-6-memory-pages}
 
 Do you remember the filesystems description ? A filesystem is a logical representation of the physical storage, cut into several blocks of the same size that are allocated to store data. The system's memory works in the same way, that's the pages.
 
@@ -39,7 +39,7 @@ The pages are managed by the kernel's memory manager, responsible for keeping tr
 
 The pages can be opened in read-only mode and write mode depending of the current request. A data storage request will open the page in write mode while a program execution will open it in read-only.
 
-### Virtual memory
+### Virtual memory {#chapter-6-virtual-memory}
 
 The virtual memory is actually how Linux manages the memory. It's a core concept in modern operating systems since it uses both the physical memory (RAM) and the mass storage (hard drive, SSD...) into a logical representation of the total system's memory. The disk storage is what we call the Swap partition.
 
@@ -51,7 +51,7 @@ One of the most interesting feature of the virtual memory is the address swappin
 
 Today, since our computers are using more and more the SSD, the usage of the Swap partition is matter to debates since these supports has a limited write endurance compared to the hard disk drives. If the system has enough RAM, the Swap partition would not really be relevant. If the Swap is required in the configuration, one possibility to avoid overusing the SSD would to use the zram or zswap features that compress the memory pages in RAM rather than writing them on disk.
 
-## Memory allocation
+## Memory allocation {#chapter-6-memory-allocation}
 
 The memory allocation is the process of allocating the physical memory to the different areas of the system. When the system starts, Linux will allocate some "regions" in the memory for specific usage. The following diagram represent some of the keys items of the memory allocation with their respective (rough) distribution.
 
@@ -65,11 +65,11 @@ The memory allocation is the process of allocating the physical memory to the di
 During its usual working routine, a process will request for a specific amount of memory using the `malloc()` or equivalent function. However, if the system runs out of memory, another protection routine is triggered : OOM (Out Of Memory) Killer. The purpose of this protection is to free enough memory to preserve the system's stability and avoiding it to crash, meanwhile stopping a non critical process to avoid service disruption. OOM killer will inspect the running processes and will determine, according to several factors (uptime, last restarted, is it a critical process, etc), which process [can be killed](https://turnoff.us/geek/bad-malloc/) to free some memory for the system. 
 
 
-## Common memory issues
+## Common memory issues {#chapter-6-common-memory-issues}
 
 The memory management is a complex operation involving various mechanisms.
 
-### Fragmentation
+### Fragmentation {#chapter-6-fragmentation}
 
 The memory fragmentation is a consequence of the memory pages usage. Since the memory is divided into numerous 4KB blocks, just like a filesystem, when a process request some memory allocation it will request *n* blocks of memory. When the system's startup time is recent, the blocks allocated are contiguous. But after a lot of allocation and restitution, the memory is getting fragmented. The small blocks are more non-contiguous and scattered throughout the memory regions.
 
@@ -77,15 +77,15 @@ This behavior can provoke issues, such as the system being unable to properly sa
 
 Since the memory fragmentation is a system management issue, Linux uses various techniques to mitigate this issue. The kernel is able to compact and perform defragmentation on the memory to recreate contiguous memory regions. The memory compaction moves pages in the memory to create larger free regions.
 
-### Memory leak
+### Memory leak {#chapter-6-memory-leak}
 
 The memory leak is another problem which is mostly caused by software development. This issue occurs when a process continually requests memory allocation without releasing it. The result could be degraded system performances or even system crashes if OOM Killer cannot free enough memory to ensure the system's stability.
 
 Since it's usually a programming issue, there are various ways to prevent it. Some tools and development assistant such as linters or code analysis solutions can provide tips to prevent potential memory leaks. Also, some programming languages interpreters can free by themselves the unused memory thanks to garbage collection routines. For other languages, the developers will have to ensure they properly allocate and release the memory.
 
-## How to check the system's memory usage
+## How to check the system's memory usage {#chapter-6-how-to-check-the-systems-memory-usage}
 
-### Reading files and basic commands
+### Reading files and basic commands {#chapter-6-reading-files-and-basic-commands}
 
 We will repeat this mantra a lot of time : "On Unix, everything's a file". No exceptions here, the memory usage can be consulted by reading some files. This one is called `/proc/meminfo`.
 
@@ -149,7 +149,7 @@ In my case, my Swap partition, offering a capacity of 16GB, is split into two al
 - `/dev/dm-1` is a filesystem on my disk with a very low priority (because it's a SSD, I haven't setup my partitions during the initial install and Fedora did it by itself). 
 - `/dev/zram0` is a compressed block device in RAM using a virtual filesystem, managed by a kernel module. This feature allows the system to store pages out of memory in compressed form in a dedicated area of memory called the zswap cache. This is an alternative to avoid using the expensive I/O operations from disk, and it improves system performances
 
-### Using top or htop
+### Using top or htop {#chapter-6-using-top-or-htop}
 
 Additionally to `free` and the various system files, there are two useful command to see your system status, including the memory usage. `top` is a command created in 1984 for Unix and included in Linux too, usually preinstalled. Unlike `ps`, another command that shows the system processes and resources usage, `top` is interactive and provides an almost real time refreshing display.
 

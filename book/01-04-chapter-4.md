@@ -1,10 +1,10 @@
-# Chapter 4 : The file permissions
+# Chapter 4 : The file permissions {#chapter-4}
 
 Now we have seen how do Linux organizes its filesystem, let's see how it manages the permissions of the files and folders.
 
 It won't be a surprise, Linux's file permissions are also inherited from Unix. The file permissions are one of the core features of Linux's security model : determine who can access to what and what they can do on it. Of course, and the security parenthesis later will confirm that, the file permissions are just a component among several other ways to secure a Linux installation.
 
-## How to see the file permissions
+## How to see the file permissions {#chapter-4-how-to-see-the-file-permissions}
 
 Let's list my `/etc` folder content. This time, I use the `ls -l` command that will display the files metadata.
 
@@ -28,7 +28,7 @@ For the `abrt` file, you may had noticed a difference with the first character :
 Remember : for Unix, everything's a file ! No matter if its a directory or a text file or a hard drive or an executable program.
 
 
-## How to read the file permissions
+## How to read the file permissions {#chapter-4-how-to-read-the-file-permissions}
 
 In our previous example, we had two different set of permissions for a file : `rwxr-xr-x` and `rw-r--r--`. These strings are actually composed of three blocks : 
 
@@ -99,7 +99,7 @@ cat: file: Permission denied
 # :(
 ```
 
-## A security parenthesis
+## A security parenthesis {#chapter-4-a-security-parenthesis}
 
 A little note about Linux's security. A common mistake is usually to believe that removing the Execute attribute to a file will protect the system from uncontrolled script executions. But like we said, using the interpreter executable command will make this idea irrelevant for an interpreted programmation language such as the shell, Python, Perl or Java. If you want to prevent the execution of commands and script from a specific filesystem (typically : the home users directory), you need to apply a specific flag to the mountpoint : `noexec`. Of course, it's just one possibility among a lot of other one in order to secure a Linux installation.
 
@@ -109,7 +109,7 @@ Another common mistake is to believe that thanks to its file permissions system,
 
 Additionally, I'll complete with another very despicable practice I can still see today… Applying the full permissions access to a file. If you read any tutorial or advice telling you "use `chmod 777 file`", don't do that unless you fully understand, and have challenged, this requirement. In other cases, that's a terrible practice. It's basically giving an open bar access to the content without any control over it.
 
-## The octal values for permissions
+## The octal values for permissions {#chapter-4-the-octal-value-permissions}
 
 The example about the bad practice is a nice transition to a second way to read (and specify) your filesystem's permissions : the octal value. Instead of using the letters notation (r, w, x), you use numbers : respectively 4, 2, 1. 
 
@@ -174,7 +174,7 @@ But if you read carefully both of these outputs you may possibly ask :
 
 Nope, that's something else :
 
-## The special file permissions
+## The special file permissions {#chapter-4-the-special-file-permissions}
 
 Actually, the octal notation is on 4 numbers, not 3. The first digit is here to apply the special file permission. These special permissions grant additional privileges to the files and directories :
 
@@ -264,7 +264,7 @@ The permissions I've used in the example above have been set like this :
 - Octal notation :
     - `chmod 2770 sgid`
 
-### Another special permission, the Sticky Bit
+### Another special permission, the Sticky Bit {#chapter-4-another-special-permission-the-sticky-bit}
 
 The Sticky bit is set at the Others level and is different than the two previous special ones because it doesn't affect the files themselves. Set at the directory level, the sticky bit restricts the file deletion inside this directory. Only the **Owner of a file** is able to delete it inside this directory. And of course, `root` is also capable of it because it can do anything.
 
