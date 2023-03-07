@@ -3,13 +3,13 @@ name: Release epub
 on:
   workflow_dispatch:
     inputs:
-      prerelease:
+      release:
         type: boolean
         description: Is it a release ?
         default: false
   workflow_call:
     inputs:
-      prerelease:
+      release:
         type: boolean
         description: Is it a release ?
         default: false
@@ -20,8 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      release: ${{ inputs.prerelease }}
     steps:
 
       - name: Checkout
@@ -39,14 +37,14 @@ jobs:
       - name: Produce release note
         uses: TriPSs/conventional-changelog-action@v3
         id: changelog
-        if: ${{ env.release == 'true' }}
+        if: ${{ inputs.release == 'true' }}
         with:
           github-token: ${{ secrets.github_token }}
           version-file: './version_file.json'
 
       - name: Publish release
         uses: softprops/action-gh-release@v1
-        if: ${{ env.release == 'true' }}
+        if: ${{ inputs.release == 'true' }}
         with:
           body: ${{ steps.changelog.outputs.clean_changelog }}
           tag_name: ${{ steps.changelog.outputs.tag }}
