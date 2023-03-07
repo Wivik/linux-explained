@@ -17,4 +17,4 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' }}
     uses: Wivik/linux-explained/.github/workflows/release.yml@main
     with:
-      prerelease: true
+      release: false
