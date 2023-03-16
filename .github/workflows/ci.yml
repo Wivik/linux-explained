@@ -16,5 +16,4 @@ jobs:
       contents: write
     if: ${{ github.actor != 'dependabot[bot]' }}
     uses: Wivik/linux-explained/.github/workflows/release.yml@main
-    with:
-      release: false
+
