@@ -103,7 +103,7 @@ cat: file: Permission denied
 
 A little note about Linux's security. A common mistake is usually to believe that removing the Execute attribute to a file will protect the system from uncontrolled script executions. But like we said, using the interpreter executable command will make this idea irrelevant for an interpreted programmation language such as the shell, Python, Perl or Java. If you want to prevent the execution of commands and script from a specific filesystem (typically : the home users directory), you need to apply a specific flag to the mountpoint : `noexec`. Of course, it's just one possibility among a lot of other one in order to secure a Linux installation.
 
-Another common mistake is to believe that thanks to its file permissions system, Linux is "more secure" than Windows, but that's terribly wrong. Linux is today [as much targeted by malwares](/posts/linux-and-the-malwares/) as Windows, but the attack patterns are different. So this reminder seems important to me :
+Another common mistake is to believe that thanks to its file permissions system, Linux is "more secure" than Windows, but that's terribly wrong. Linux is today as much targeted by malwares[^linuxmalwares] as Windows, but the attack patterns are different. So this reminder seems important to me :
 
 **A Linux Distribution is not more or less secured by design than any other operating system, and especially not out of box. Securing and hardening a Linux installation is a specific work requiring advanced competences in matter of system administration and IT security. And more important : Linux is not foolproof !**
 
@@ -222,7 +222,7 @@ I'm sure you have a question here :
 
 > Mmmh how can the file permissions secure Linux if a command can allow anybody to become super admin ?!
 
-Good question : `sudo` is not a dumb command. It relies on a list of allowed users with the commands they can perform as another one, the `sudoers`. So if the current user is not in the `sudoers`, `sudo` will reject the input and [report the incident](https://xkcd.com/838/).
+Good question : `sudo` is not a dumb command. It relies on a list of allowed users with the commands they can perform as another one, the `sudoers`. So if the current user is not in the `sudoers`, `sudo` will reject the input and report the incident[^reportsudo].
 
 Now let's make an example for the SGID, which ensure the files created in a directory will always have the directory's permissions whoever is writing them.
 
@@ -305,3 +305,9 @@ $ sudo -u apache rm sticky/file-seb
 rm: remove write-protected regular empty file 'sticky/file-seb'? y
 rm: cannot remove 'sticky/file-seb': Operation not permitted
 ```
+
+
+[^linuxmalwares]: Linux and the malwares https://blog.zedas.fr/posts/linux-and-the-malwares/
+
+[^reportsudo]: This incident will be reported xkcd https://xkcd.com/838/
+

@@ -8,7 +8,7 @@ In your computer, or your smartphone, technical sheet, you have a criteria named
 
 ![A RAM card.](img/ram.png)
 
-Image from [OpenClipArt](https://openclipart.org/detail/25792/ram-computer-memory), public domain.
+Image from OpenClipArts[^openclipartram], public domain.
 
 The RAM is volatile (but it exists some non-volatile variants we won't talk about here), which means its content is lost when the memory card's power supply is cut off. That's the opposite with your computer storage, such as the hard disk drive (HDD) or the solid-state drive (SSD) that keep their content after the system being turned off. 
 
@@ -62,7 +62,7 @@ The memory allocation is the process of allocating the physical memory to the di
 - Page cache : this cache section contains the recently accessed files stored in memory to improve file access performance. This space is managed by the kernel's page cache management system.
 - Slab allocator : This memory allocation mechanism is used by the kernel to allocate small to medium sized data type objects such as data structures, network buffers or file system buffers. Its role is to reduce the CPU time costly action of initialize and destroy kernel data objects and reuse them.
 
-During its usual working routine, a process will request for a specific amount of memory using the `malloc()` or equivalent function. However, if the system runs out of memory, another protection routine is triggered : OOM (Out Of Memory) Killer. The purpose of this protection is to free enough memory to preserve the system's stability and avoiding it to crash, meanwhile stopping a non critical process to avoid service disruption. OOM killer will inspect the running processes and will determine, according to several factors (uptime, last restarted, is it a critical process, etc), which process [can be killed](https://turnoff.us/geek/bad-malloc/) to free some memory for the system. 
+During its usual working routine, a process will request for a specific amount of memory using the `malloc()` or equivalent function. However, if the system runs out of memory, another protection routine is triggered : OOM (Out Of Memory) Killer. The purpose of this protection is to free enough memory to preserve the system's stability and avoiding it to crash, meanwhile stopping a non critical process to avoid service disruption. OOM killer will inspect the running processes and will determine, according to several factors (uptime, last restarted, is it a critical process, etc), which process can be killed[^oomkiller] to free some memory for the system. 
 
 
 ## Common memory issues {#chapter-6-common-memory-issues}
@@ -172,4 +172,8 @@ In these two commands, we have three interesting metrics : VIRT, RES and SHR.
 - SHR : Shared Pages, the amount of shared memory used by a process. This is a technique allowing two or more processes to share the same memory segment in order to reduce the amount of memory used by the overall system.
 
 In the two screenshots, you see the `cinnamon` desktop environment main process using 5GB of VIRT memory, but actually it uses 292MB of physical memory and shares 133MB memory with other processes. 
+
+[^openclipartram]: https://openclipart.org/detail/25792/ram-computer-memory
+
+[^oomkiller]: Bad malloc - Turnsoff https://turnoff.us/geek/bad-malloc/
 

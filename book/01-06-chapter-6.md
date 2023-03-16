@@ -415,7 +415,7 @@ $ cat /etc/filesystems | grep vfat
 $ cat file | less
 ```
 
-These three examples are shell pipeline. They're recognizable by the usage of the pipe `|` character. These pipelines allow to create a [one-liner program](https://en.wikipedia.org/wiki/One-liner_program), a program that performs its action with only one line of code. The one-liners are quite a special culture in the shell scripting word, with a lot of challenges to perform complexe tasks in one line of code. That's a complexe and intellectually rewarding effort, but sometimes it can also be very difficult to read and understand.
+These three examples are shell pipeline. They're recognizable by the usage of the pipe `|` character. These pipelines allow to create a one-liner program[^onelinerprogram], a program that performs its action with only one line of code. The one-liners are quite a special culture in the shell scripting word, with a lot of challenges to perform complexe tasks in one line of code. That's a complexe and intellectually rewarding effort, but sometimes it can also be very difficult to read and understand.
 
 Here is the workflow used by the Shell to process this command : 
 
@@ -537,4 +537,6 @@ zsh: no such file or directory: /dev/tcp/zedas.fr/443
 $ bash -c "</dev/tcp/zedas.fr/443" && echo ok
 ok
 ```
+
+[^onelinerprogram]: One-liner program https://en.wikipedia.org/wiki/One-liner_program
 
