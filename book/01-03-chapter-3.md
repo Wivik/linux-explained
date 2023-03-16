@@ -2,7 +2,7 @@
 
 ## What is a filesystem ? {#chapter3-chat-is-a-filesystem}
 
-A [filesystem](https://en.wikipedia.org/wiki/File_system), or FS, is the method an operating system uses to structure the data on a storage device (hard drive, SSD, USB flash stick, whatever). It's a logical view of the physical storage that describes how the disk is organized and how and where the various data pieces are stored and identified to compose a consistent file. Indeed, when a file is written on disk, the content is actually cut into several parts written in blocks. Your file is like a series of books stored on a shelf. In this metaphor, the shelf would be the file and the books its fragments. The blocks size may vary according to the filesystem format settings.
+A filesystem[^filesystem], or FS, is the method an operating system uses to structure the data on a storage device (hard drive, SSD, USB flash stick, whatever). It's a logical view of the physical storage that describes how the disk is organized and how and where the various data pieces are stored and identified to compose a consistent file. Indeed, when a file is written on disk, the content is actually cut into several parts written in blocks. Your file is like a series of books stored on a shelf. In this metaphor, the shelf would be the file and the books its fragments. The blocks size may vary according to the filesystem format settings.
 
 In a more simple words, the filesystem is the mapping chart of the physical storage for the operating system. Here is a very simple diagram to explain this :
 
@@ -10,22 +10,22 @@ In a more simple words, the filesystem is the mapping chart of the physical stor
 
 Ever heard about "formatting a disk" ? For the end-user, this action usually means "erasing the content". Actually that's a side effect because the formatting process will commonly rewrite the file allocation table, delete the files metadata, and throw back the related sectors into the "free sectors pool". In a nutshell, the disk "forgets" its contents. But the data pieces on the disk may still remain until they are overwritten by new ones. This is how the recovery tools work when you try to recover a file you've erased by mistake : they usually inspect the sectors for orphaned data pieces and try to reconstruct the file.
 
-There are various filesystems type existing. This diversity is mostly related to the diversity of storage types : optical, tapes, database filesystems, network filesystem, etc. One very well known is the [FAT](https://en.wikipedia.org/wiki/File_Allocation_Table) - File Allocation Table -, created in 1977 for floppy disks and adapted for hard drives, it was also the MS-DOS default filesystem, also for Microsoft Windows, until [NTFS](https://en.wikipedia.org/wiki/NTFS) replaced it. One of the biggest advantage for the FAT filesystem (mostly in this exFAT and FAT32 version) is that it became a *de facto* standard and is used in almost every device that uses external storage. For instance, my camera formats its memory cards in exFAT. Despite being patented by Microsoft, the exFAT and FAT specifications has finally been publicly released by the company in 2019.
+There are various filesystems type existing. This diversity is mostly related to the diversity of storage types : optical, tapes, database filesystems, network filesystem, etc. One very well known is the FAT[^FAT] - File Allocation Table -, created in 1977 for floppy disks and adapted for hard drives, it was also the MS-DOS default filesystem, also for Microsoft Windows, until NFTS[^NTFS] replaced it. One of the biggest advantage for the FAT filesystem (mostly in this exFAT and FAT32 version) is that it became a *de facto* standard and is used in almost every device that uses external storage. For instance, my camera formats its memory cards in exFAT. Despite being patented by Microsoft, the exFAT and FAT specifications has finally been publicly released by the company in 2019.
 
-On Linux, the most common filesystems type today are [ext4](https://en.wikipedia.org/wiki/Ext4) (preceded by ext2 and ext3), [xfs](https://en.wikipedia.org/wiki/XFS) or [btrfs](https://en.wikipedia.org/wiki/Btrfs). Each of them has its specificity and purpose :
+On Linux, the most common filesystems type today are ext4[^ext4] (preceded by ext2 and ext3), xfs[^xfs] or btrfs[^btrfs]. Each of them has its specificity and purpose :
 - ext4 is pretty common for Linux. It's the successor or ext3 which was very popular
 - xfs targets high performance and large storage arrays but it can be used without this specific purpose
 - Btrfs is more recent and supports advanced features like snapshots, subvolumes, and online defragmentation. Btrfs is the default filesystem for Fedora Linux since a couple of releases (Fedora 33).
 - FAT32, exFAT, and Microsoft's NTFS are also supported by Linux
-- [Tmpfs](https://en.wikipedia.org/wiki/Tmpfs) is also a filesystem now common on Linux to replace the physical storage of the /tmp partition with a virtual partition in the system's RAM, typically to avoid unnecessary writings for flash-based storage devices like the SSD that would reduce their lifespan.
+- Tmpfs[^Tmpfs] is also a filesystem now common on Linux to replace the physical storage of the /tmp partition with a virtual partition in the system's RAM, typically to avoid unnecessary writings for flash-based storage devices like the SSD that would reduce their lifespan.
     - The same idea exists for the Swap partition
-- For network file systems, you will usually hear about [NFS](https://en.wikipedia.org/wiki/Network_File_System_(protocol)) and [SMB](https://en.wikipedia.org/wiki/Server_Message_Block) protocols that can mount a remote storage through the network layers.
+- For network file systems, you will usually hear about NFS[^NFS] and SMB[^SMB] protocols that can mount a remote storage through the network layers.
 
 ext4, xfs and Btrfs have all a common thing : they're journaling filesystems (NTFS too, but it's a Windows native FS, not Linux). In a nutshell, a journaling filesystem keeps tracks of the changes not yet committed into a "journal", a circular log file. In case of a failure event (power failure, system crash, etc), these filesystems can be brought online faster and are more resilient to the risk of corruption. Basically, the journal stores the write events before actually executing them on the disk, preventing the risk of orphaned data blocks or storage leak, meaning the free sectors are not released into the pool for being reused. The journaling filesystem has been created by IBM with AIX 3.1's JFS in 1990. Microsoft implemented it in its Windows NT's NTFS in 1993. For Linux, the journaling FS arrived in 2001 with ReiserFS and ext3.
 
 ## The filesystem structure and mount concept {#chapter-3-the-filesystem-structure-and-mount-concept}
 
-Linux's filesystem organization is standardized in the [Filesystem Hierarchy Standard](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) specification. Inherited from the [Unix Filesystem](https://en.wikipedia.org/wiki/Unix_filesystem), the structure is very similar. On Microsoft Windows, a filesystem is represented by a letter, usually the `C:` drive for the main one, and `D:` for the next one, which may be an optical drive, etc. On Unix and Linux, this notion does not exists. 
+Linux's filesystem organization is standardized in the Filesystem Hierarchy Standard[^filesystemhierarchystandard] specification. Inherited from the Unix Filesystem[^UnixFilesystem], the structure is very similar. On Microsoft Windows, a filesystem is represented by a letter, usually the `C:` drive for the main one, and `D:` for the next one, which may be an optical drive, etc. On Unix and Linux, this notion does not exists. 
 
 ### The Filesystem hierarchy {#chapter-3-the-filesystem-hierarchy}
 
@@ -154,6 +154,33 @@ For example, if I have the following line in `/etc/fstab` :
 /dev/sdc1 /media/somefilesystem ext4 defaults 1 1
 ```
 
-Using `mount /media/somefilesystem` will mount it according to this entry defined in `/etc/fstab`. There is also the [autofs](https://www.kernel.org/doc/html/latest/filesystems/autofs.html) module that is able to automatically mount a filesystem defined in another set of configuration files when going into its mountpoint path.
+Using `mount /media/somefilesystem` will mount it according to this entry defined in `/etc/fstab`. There is also the autofs[^autofs] module that is able to automatically mount a filesystem defined in another set of configuration files when going into its mountpoint path.
 
-On Linux servers, we usually use the [Logical Volume Management](https://en.wikipedia.org/wiki/Logical_volume_management) which is an flexible abstractive filesystem that present a consistent storage volume composed of several physical disks. It's main asset is that you can extend the filesystem capacity by adding physical disks to the array and allocating the capacity to the filesystem, it's very used in virtualization (in this case, the disks are virtual). On a Server's filesystem, the `/var`, `/opt` and `/srv` would be mounted from LVM filesystems than can be extended it the storage capacity gets too small during the ramp-up of a service for example.
+On Linux servers, we usually use the Logical Volume Management[^lvm] which is an flexible abstractive filesystem that present a consistent storage volume composed of several physical disks. It's main asset is that you can extend the filesystem capacity by adding physical disks to the array and allocating the capacity to the filesystem, it's very used in virtualization (in this case, the disks are virtual). On a Server's filesystem, the `/var`, `/opt` and `/srv` would be mounted from LVM filesystems than can be extended it the storage capacity gets too small during the ramp-up of a service for example.
+
+[^filesystem]: Filesystem https://en.wikipedia.org/wiki/File_system)
+
+[^FAT]: File allocation Table https://en.wikipedia.org/wiki/File_Allocation_Table
+
+[^NTFS]: NTFS https://en.wikipedia.org/wiki/NTFS
+
+[^ext4]: Ext4 https://en.wikipedia.org/wiki/Ext4
+
+[^xfs]: XFS https://en.wikipedia.org/wiki/XFS
+
+[^btrfs]: Btrfs https://en.wikipedia.org/wiki/Btrfs
+
+[^Tmpfs]: Tmpfs https://en.wikipedia.org/wiki/Tmpfs
+
+[^NFS]: Network File System (Protocol) https://en.wikipedia.org/wiki/Network_File_System_(protocol)
+
+[^SMB]: Server Message Block https://en.wikipedia.org/wiki/Server_Message_Block
+
+[^filesystemhierarchystandard]: Filesystem Hierarchy Standard https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+
+[^UnixFilesystem]: Unix Filesystem https://en.wikipedia.org/wiki/Unix_filesystem
+
+[^autofs]: autofs https://www.kernel.org/doc/html/latest/filesystems/autofs.html
+
+[^lvm]: Logical Volume Management https://en.wikipedia.org/wiki/Logical_volume_management
+

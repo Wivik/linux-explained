@@ -2,7 +2,7 @@
 
 ## From RSH to SSH {#chapter-8-from-rsh-to-ssh}
 
-The Remote Shell, or `rsh`, is a command line computer program created in 1983 as a part of the Berkeley "*[r-commands](https://en.wikipedia.org/wiki/Berkeley_r-commands)*" - r for remote -, released for the first time in 1981, made to enable the users of an Unix computer to connect to another one using the network. Aside `rsh`, this set of commands includes tools for remote file copy (`rcp`), remote file synchronization (`rsync`), remote execution (`rexec`), etc.
+The Remote Shell, or `rsh`, is a command line computer program created in 1983 as a part of the Berkeley "*r-commands[^r-commands]*" - r for remote -, released for the first time in 1981, made to enable the users of an Unix computer to connect to another one using the network. Aside `rsh`, this set of commands includes tools for remote file copy (`rcp`), remote file synchronization (`rsync`), remote execution (`rexec`), etc.
 
 The *r-commands* were a nice innovation and became *de facto* standards commands for Unix. However, with the development of the Internet and the usage of remote network, their security became a concern since the data were transmitted in clear text across the network, including the login identifier and password. Also the passwordless authentication method was very weak and relied on the honesty of the configuration.
 
@@ -10,7 +10,7 @@ So, to address these issues, a secured version of the protocol has been develope
 
 Like `rsh`, `ssh` is a client server protocol made to open sessions on a remote system. But, unlike `rsh`, `ssh` uses cryptography to encrypt the network activity of its protocol. This protocol is a standard since its large adoption that replaced the unsecured remote shell.
 
-Today, one of the most common implementation is the [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH) version, released in 1999 and forked from the original SSH protocol while it was still a free software before being transformed into a commercial product. The protocol is generally referred by the name SSH-1 and SSH-2 meaning the major version of its implementation. SSH-2 has been developed by OpenSSH as a revisited version and the protocol also implemented backward compatibility with SSH-1. Today, SSH-1 is deprecated and should not be used. OpenSSH definitely expunged its support from the code base with the 7.6 release in 2017.
+Today, one of the most common implementation is the OpenSSH[^openssh] version, released in 1999 and forked from the original SSH protocol while it was still a free software before being transformed into a commercial product. The protocol is generally referred by the name SSH-1 and SSH-2 meaning the major version of its implementation. SSH-2 has been developed by OpenSSH as a revisited version and the protocol also implemented backward compatibility with SSH-1. Today, SSH-1 is deprecated and should not be used. OpenSSH definitely expunged its support from the code base with the 7.6 release in 2017.
 
 ## SSH Architecture {#chapter-8-ssh-architecture}
 
@@ -317,7 +317,7 @@ $  sudo journalctl -u sshd --follow
 
 On servers using SELinux, the SSH activity is also traced in `/var/log/audit`.
 
-Another very useful tool is [fail2ban](https://en.wikipedia.org/wiki/Fail2ban). Fail2ban is an intrusion prevention software available in the repositories of almost all major Linux distributions. This tool is designed to prevent brute-force attacks by monitoring the services activity logs (so SSH is one of them, but you can also monitor the web server logs, etc). If the service detects *n* failed access attempts, based on its configuration, it will "put in jail" the attacker.
+Another very useful tool is fail2ban[^fail2ban]. Fail2ban is an intrusion prevention software available in the repositories of almost all major Linux distributions. This tool is designed to prevent brute-force attacks by monitoring the services activity logs (so SSH is one of them, but you can also monitor the web server logs, etc). If the service detects *n* failed access attempts, based on its configuration, it will "put in jail" the attacker.
 
 Actually, fail2ban uses the built-in firewall to set a temporary policy that will drop every packages coming from the attacker's IP address. 
 
@@ -338,4 +338,10 @@ Status for the jail: sshd
 ```
 
 Fail2ban includes out of box a "jail" setting for the common Linux services : sshd, Apache, Lighthttpd, vsftpd, Postfix, and Courier Mail Server.
+
+[^r-commands]: Berkeley's r-commands https://en.wikipedia.org/wiki/Berkeley_r-commands
+
+[^openssh]: OpenSSH https://en.wikipedia.org/wiki/OpenSSH
+
+[^fail2ban]: Fail2ban https://en.wikipedia.org/wiki/Fail2ban
 

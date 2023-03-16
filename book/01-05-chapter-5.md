@@ -2,7 +2,7 @@
 
 ## What is a user and group for Linux ? {"chapter-5-what-is-a-user-and-group-for-linux}
 
-If you remember the Unix history in the first chapter, one detail about the *Multics*, then *Unix* conception was to be multi-users. A [multi-user software](https://en.wikipedia.org/wiki/Multi-user_software) is a program able to give access to the computing resources by multiple users of the machine. Nowadays it must seems to be pretty obvious, but in the dark ages of computing, the ability for a computer to executes several processes simultaneously was limited. The concept of multitasking arrived in the years 1960, and the computers were able to share CPU time and resources for several processes at once, thanks to the implementation of scheduling, priority management, and inter-process communication. 
+If you remember the Unix history in the first chapter, one detail about the *Multics*, then *Unix* conception was to be multi-users. A multi-user software[^multiusersoftware] is a program able to give access to the computing resources by multiple users of the machine. Nowadays it must seems to be pretty obvious, but in the dark ages of computing, the ability for a computer to executes several processes simultaneously was limited. The concept of multitasking arrived in the years 1960, and the computers were able to share CPU time and resources for several processes at once, thanks to the implementation of scheduling, priority management, and inter-process communication. 
 
 One of the result of this implementation is the "users" management. In computing, a user is the physical person using a computer. It's also a logical identity the operating system knows with specific permissions and rights : that's the user account. The user account identity is usually protected by a password to ensure only people aware of this secret should access these specific computing resources.
 
@@ -182,7 +182,7 @@ Some good practices about `root` (non exhaustive list) :
 
 - Limit the usage of this user, only when it's absolutely necessary for administrative tasks
 - Use `sudo` instead of switching to `root`. We described this command in the previous chapter, it can assign a specific list of tasks for a privileged user and trace these actions in the audit logs
-- Use strong passwords, often renewed. In enterprise context, the access to a Linux (and Windows too) server should be managed by [Identity Management](https://en.wikipedia.org/wiki/Identity_management).
+- Use strong passwords, often renewed. In enterprise context, the access to a Linux (and Windows too) server should be managed by Identity Management[^identitymanagement].
 - `root`'s activity should be audited and monitored to identify suspicious activity
 - Keep your system up to date because trying to break `root`'s access thanks to vulnerabilities is one of the attack pattern
 - `root` should not be able to open remote ssh sessions, that's usually a default setting in openSSH server to forbid it
@@ -391,3 +391,9 @@ As you can see, the group has been preserved since it's a different thing. The h
 > Since everything's managed by configurations files, can I edit them directly ?
 
 Yes you can, but you shouldn't, it's a bad practice. You can edit the default's shell of a user or its Gecos without any consequences, but updating the UID/GID or username may have issues because the administration commands will also refresh the various caches where the information is stored. It could lead to inconsistencies in configurations, especially when it's managed by another deployment tool such as Ansible or Chef or by a system package.
+
+
+[^multiusersoftware]: Multi-user software https://en.wikipedia.org/wiki/Multi-user_software
+
+[^identitymanagement]: Identity management https://en.wikipedia.org/wiki/Identity_management
+
