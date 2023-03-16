@@ -1,3 +1,18 @@
+# [0.5.0](https://github.com/Wivik/linux-explained/compare/v0.4.0...v0.5.0) (2023-03-16)
+
+
+### Bug Fixes
+
+* :ambulance: removed references from bibliography ([a0140cd](https://github.com/Wivik/linux-explained/commit/a0140cd9384a3449561f1f76653e1f24d945fa16))
+
+
+### Features
+
+* :memo: add references for each chapter ([c7172a1](https://github.com/Wivik/linux-explained/commit/c7172a1c576340512bf68575e904bcc799953cc4))
+* :sparkles: cleanup links to reference  ([17ae914](https://github.com/Wivik/linux-explained/commit/17ae91430a52eae833d6a2c9fb38b5c452b8c7c6))
+
+
+
 # [0.4.0](https://github.com/Wivik/linux-explained/compare/v0.3.0...v0.4.0) (2023-03-07)
 
 
@@ -36,15 +51,6 @@
 ### Bug Fixes
 
 * :ambulance: empty line required for chapters ([33d3267](https://github.com/Wivik/linux-explained/commit/33d326740f7766848443f9165b6b4de0bac1fce3))
-
-
-
-## [0.2.1](https://github.com/Wivik/linux-explained/compare/v0.2.0...v0.2.1) (2023-02-23)
-
-
-### Bug Fixes
-
-* :ambulance: empty line required for chapters ([434266c](https://github.com/Wivik/linux-explained/commit/434266c60d10a6b6ecbe11e6a712ff30cee61445))
 
 
 
