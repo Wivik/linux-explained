@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/Wivik/linux-explained/compare/v0.5.1...v0.5.2) (2023-03-19)
+
+
+### Bug Fixes
+
+* reference in biblio ([f760e6d](https://github.com/Wivik/linux-explained/commit/f760e6dcf659f8e6e456956340b77827b443e27f))
+
+
+
 ## [0.5.1](https://github.com/Wivik/linux-explained/compare/v0.5.0...v0.5.1) (2023-03-19)
 
 
@@ -42,15 +51,6 @@
 ### Features
 
 * chapter 7 ([dc0e1b0](https://github.com/Wivik/linux-explained/commit/dc0e1b06355b0fdfc9e310b3c3bfa996a915ea1a))
-
-
-
-## [0.2.3-rc.0](https://github.com/Wivik/linux-explained/compare/v0.2.2...v0.2.3-rc.0) (2023-02-24)
-
-
-### Bug Fixes
-
-* :hammer: cover image needs full path.. ([2d81ae8](https://github.com/Wivik/linux-explained/commit/2d81ae817b16d4166b582dcbaf3670f93c14800e))
 
 
 
