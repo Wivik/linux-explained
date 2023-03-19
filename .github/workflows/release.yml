@@ -20,7 +20,7 @@ jobs:
         run: echo BOOK_FILES=$(ls book/00-*.md book/01-*.md book/02-*.md) >> $GITHUB_OUTPUT
 
       - name: Write epub
-        uses: docker://pandoc/core:2.9
+        uses: docker://pandoc/core:2.14
         with:
           args: "-o linux-explained.epub --resource-path=.:book ${{ steps.book-files.outputs.BOOK_FILES }} --standalone"
 

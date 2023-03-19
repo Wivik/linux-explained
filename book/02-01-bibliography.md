@@ -100,7 +100,7 @@ Logical Volume Management https://en.wikipedia.org/wiki/Logical_volume_managemen
 
 Linux and the malwares https://blog.zedas.fr/posts/linux-and-the-malwares/
 
-[^reportsudo]: This incident will be reported - xkcd https://xkcd.com/838/
+This incident will be reported - xkcd https://xkcd.com/838/
 
 ## Chapter 5
 
