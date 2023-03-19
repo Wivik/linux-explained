@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/Wivik/linux-explained/compare/v0.5.0...v0.5.1) (2023-03-19)
+
+
+### Bug Fixes
+
+* :ambulance: removec ToC because it broke the epub ([e07757a](https://github.com/Wivik/linux-explained/commit/e07757a21a6afb0f0418a46a919b0a7817db5a34))
+
+
+
 # [0.5.0](https://github.com/Wivik/linux-explained/compare/v0.4.0...v0.5.0) (2023-03-16)
 
 
@@ -42,15 +51,6 @@
 ### Bug Fixes
 
 * :hammer: cover image needs full path.. ([2d81ae8](https://github.com/Wivik/linux-explained/commit/2d81ae817b16d4166b582dcbaf3670f93c14800e))
-
-
-
-## [0.2.2](https://github.com/Wivik/linux-explained/compare/v0.2.1...v0.2.2) (2023-02-23)
-
-
-### Bug Fixes
-
-* :ambulance: empty line required for chapters ([33d3267](https://github.com/Wivik/linux-explained/commit/33d326740f7766848443f9165b6b4de0bac1fce3))
 
 
 
