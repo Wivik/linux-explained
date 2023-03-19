@@ -84,7 +84,7 @@ RSA is one of the most common key algorithm supported by nearly all SSH clients 
 
 ### The password authentication {#chapter-8-the-password-authentication}
 
-The password authentication is basically the same method as authenticating locally on the computer and will follow the same workflow as the pattern we described in [Chapter 5 : User management](#chapter5).
+The password authentication is basically the same method as authenticating locally on the computer and will follow the same workflow as the pattern we described in [Chapter 5 : User management](#chapter-5).
 
 Once the secured tunnel is setup by the SSH connection, the user sends its username and password. Then, the usual Linux login process is executed and the server authenticates the user.
 
